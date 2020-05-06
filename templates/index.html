@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if objects %}
+  <table id='result' class='display'>
+    <thead>
+      <tr>
+      {% for header in headers %}
+        <th>{{header}}</th>
+      {% endfor %}
+      </tr>
+    </thead>
+
+    <tbody>
+    {% for object in objects %}	
+      <tr>
+  	{% for item in object %}
+        <td>{{item}}</td>
+      {% endfor %}
+      </tr>
+    {% endfor %}		
+    </tbody>
+  </table>
+{% endif %}
+
+{% endblock %}
+
+</tbody>
+{% block js %}
+<script type='text/javascript'>
+	document.addEventListener("DOMContentLoaded", function(event) { 
+    $('#result').DataTable();
+    // TODO: fix this; seems to have broken in latest version of datatables:
+    // document.getElementById("query").focus(); // Focuses on search bar
+    
+  });
+</script>
+{% endblock %}
